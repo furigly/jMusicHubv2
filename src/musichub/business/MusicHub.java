@@ -1,6 +1,15 @@
 package musichub.business;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import musichub.util.*;
 import org.w3c.dom.*;
 
@@ -219,21 +228,32 @@ public class MusicHub {
 
 	}
 
-	public void playSong(String elementTitle) throws NoElementFoundException {
-		int i;
-		boolean found = false;
-		AudioElement theElement = null;
-		for (i = 0; i < elements.size(); i++) {
-			if (elements.get(i).getTitle().toLowerCase().equals(elementTitle.toLowerCase())) {
-				theElement = elements.get(i);
-				found = true;
-				break;
-			}
-		}
-		if (found == true) {
-			//playelement
-		} else
-			throw new NoElementFoundException("Element " + elementTitle + " not found!");
+	public void playSong(String elementTitle)
+			throws NoElementFoundException, UnsupportedAudioFileException, IOException, LineUnavailableException {
+
+		File audio = new File("files/ring.wav");
+		AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
+		Clip clip = AudioSystem.getClip();
+		clip.open(audioStream);
+		clip.start();
+
+		// int i;
+		// boolean found = false;
+		// AudioElement theElement = null;
+		// for (i = 0; i < elements.size(); i++) {
+		// if
+		// (elements.get(i).getTitle().toLowerCase().equals(elementTitle.toLowerCase()))
+		// {
+		// theElement = elements.get(i);
+		// found = true;
+		// break;
+		// }
+		// }
+		// if (found == true) {
+		// // playelement
+
+		// } else
+		// throw new NoElementFoundException("Element " + elementTitle + " not found!");
 	}
 
 	private void loadAlbums() {

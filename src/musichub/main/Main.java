@@ -3,8 +3,12 @@ package musichub.main;
 import musichub.business.*;
 import java.util.*;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 import java.beans.XMLEncoder;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.BufferedOutputStream;
 
 public class Main {
@@ -40,10 +44,19 @@ public class Main {
 					String songTitle = scan.nextLine();
 					try {
 						theHub.playSong(songTitle);
-						//play the chosen song
+						// play the chosen song
 					} catch (NoElementFoundException ex) {
 						System.out.println("No song found with the requested title " + ex.getMessage());
-					}  
+					} catch (UnsupportedAudioFileException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (LineUnavailableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					printAvailableCommands();
 					choice = scan.nextLine();
 					break;
