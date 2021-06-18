@@ -230,30 +230,24 @@ public class MusicHub {
 
 	public void playSong(String elementTitle)
 			throws NoElementFoundException, UnsupportedAudioFileException, IOException, LineUnavailableException {
-
-		File audio = new File("files/ring.wav");
-		AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
-		Clip clip = AudioSystem.getClip();
-		clip.open(audioStream);
-		clip.start();
-
-		// int i;
-		// boolean found = false;
-		// AudioElement theElement = null;
-		// for (i = 0; i < elements.size(); i++) {
-		// if
-		// (elements.get(i).getTitle().toLowerCase().equals(elementTitle.toLowerCase()))
-		// {
-		// theElement = elements.get(i);
-		// found = true;
-		// break;
-		// }
-		// }
-		// if (found == true) {
-		// // playelement
-
-		// } else
-		// throw new NoElementFoundException("Element " + elementTitle + " not found!");
+		int i;
+		boolean found = false;
+		AudioElement theElement = null;
+		for (i = 0; i < elements.size(); i++) {
+			if (elements.get(i).getTitle().toLowerCase().equals(elementTitle.toLowerCase())) {
+				theElement = elements.get(i);
+				found = true;
+				break;
+			}
+		}
+		if (found == true) {
+			File audio = new File("files/audio/"+theElement.content);
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioStream);
+			clip.start();
+		} else
+			throw new NoElementFoundException("Element " + elementTitle + " not found!");
 	}
 
 	private void loadAlbums() {

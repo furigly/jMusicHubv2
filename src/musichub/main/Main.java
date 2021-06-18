@@ -46,16 +46,13 @@ public class Main {
 						theHub.playSong(songTitle);
 						// play the chosen song
 					} catch (NoElementFoundException ex) {
-						System.out.println("No song found with the requested title " + ex.getMessage());
+						System.out.println("No song found with the requested title : " + ex.getMessage());
 					} catch (UnsupportedAudioFileException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out.println("The audio file is not supported : " + e.getMessage());
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out.println("The audio file didn't open correctly : " + e.getMessage());
 					} catch (LineUnavailableException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						System.out.println("The audio canal is not available : " + e.getMessage());
 					}
 					printAvailableCommands();
 					choice = scan.nextLine();
