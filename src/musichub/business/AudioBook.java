@@ -16,8 +16,7 @@ public class AudioBook extends AudioElement {
 		super (title, artist, lengthInSeconds, content);
 		this.setLanguage(language);
 		this.setCategory(category);
-	}
-	
+	}	
 	public AudioBook (Element xmlElement) throws Exception {
 		super(xmlElement);
 		try {
