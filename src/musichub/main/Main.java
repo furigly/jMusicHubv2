@@ -14,8 +14,8 @@ import java.io.BufferedOutputStream;
 public class Main {
 	public static void main(String[] args) {
 
-		MusicHub theHub = new MusicHub();
 		Log log = new Log();
+		MusicHub theHub = new MusicHub(log);
 
 		System.out.println("Type h for available commands");
 
