@@ -28,6 +28,9 @@ public class Main
 					printAvailableCommands();
 					choice = scan.nextLine();
 				break;
+				case 'i':
+					//TODO
+				break;
 				case 't':
 					//album titles, ordered by date
 					System.out.println(theHub.getAlbumsTitlesSortedByDate());
