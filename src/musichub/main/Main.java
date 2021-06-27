@@ -13,11 +13,10 @@ import java.io.BufferedOutputStream;
 
 public class Main {
 	public static void main(String[] args) {
+		Vue vue= new Vue();
 
 		Log log = new Log();
 		MusicHub theHub = new MusicHub(log);
-
-		System.out.println("Type h for available commands");
 
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
@@ -31,7 +30,7 @@ public class Main {
 		while (choice.charAt(0) != 'q') {
 			switch (choice.charAt(0)) {
 				case 'h':
-					printAvailableCommands();
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'i':
@@ -39,229 +38,206 @@ public class Main {
 					itae = theHub.elements();
 					while (itae.hasNext()) {
 						AudioElement ae = itae.next();
-						if (ae instanceof Song)
-							System.out.println(ae.getTitle());
+						vue.showsongtitle(ae);
 					}
 					String songTitle = scan.nextLine();
 					try {
 						theHub.playSong(songTitle);
 					} catch (NoElementFoundException ex) {
-						System.out.println("No song found with the requested title : " + ex.getMessage());
+						vue.nosongfound(ex);
 						log.writeError("No song found with the requested title trying to listen to it.");
 					} catch (UnsupportedAudioFileException e) {
-						System.out.println("The audio file is not supported : " + e.getMessage());
+						vue.noaudiofilesupported(e);
 						log.writeError("The audio file is not supported.");
 					} catch (IOException e) {
-						System.out.println("The audio file didn't open correctly : " + e.getMessage());
+						vue.audiofilenoopen(e);
 						log.writeError("The audio file didn't open correctly.");
 					} catch (LineUnavailableException e) {
-						System.out.println("The audio canal is not available : " + e.getMessage());
+						vue.wrongcanal(e);
 						log.writeError("The audio canal is not available.");
 					}
-					printAvailableCommands();
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 't':
 					// album titles, ordered by date
-					System.out.println(theHub.getAlbumsTitlesSortedByDate());
-					printAvailableCommands();
+					vue.orderedbytitle(theHub);
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'g':
 					// songs of an album, sorted by genre
-					System.out.println(
-							"Songs of an album sorted by genre will be displayed; enter the album name, available albums are:");
-					System.out.println(theHub.getAlbumsTitlesSortedByDate());
-
+					vue.songofalbumgenre(theHub);
 					albumTitle = scan.nextLine();
-					try {
-						System.out.println(theHub.getAlbumSongsSortedByGenre(albumTitle));
-					} catch (NoAlbumFoundException ex) {
-						System.out.println("No album found with the requested title " + ex.getMessage());
-						log.writeError("No album found with the requested title.");
-					}
-					printAvailableCommands();
+					vue.dontitrealbum(theHub,albumTitle , log);					
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'd':
 					// songs of an album
-					System.out.println(
-							"Songs of an album will be displayed; enter the album name, available albums are:");
-					System.out.println(theHub.getAlbumsTitlesSortedByDate());
-
+					vue.songdisplay(theHub);
 					albumTitle = scan.nextLine();
-					try {
-						System.out.println(theHub.getAlbumSongs(albumTitle));
-					} catch (NoAlbumFoundException ex) {
-						System.out.println("No album found with the requested title " + ex.getMessage());
-						log.writeError("No album found with the requested title.");
-					}
-					printAvailableCommands();
+					vue.songdisplayerror(theHub, albumTitle, log);
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'u':
 					// audiobooks ordered by author
-					System.out.println(theHub.getAudiobooksTitlesSortedByAuthor());
-					printAvailableCommands();
+					vue.orderedbyAutor(theHub);
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'c':
 					// add a new song
-					System.out.println("Enter a new song: ");
-					System.out.println("Song title: ");
+					vue.gettitle();
 					String title = scan.nextLine();
-					System.out.println("Song genre (jazz, classic, hiphop, rock, pop, rap):");
+					vue.getgenre();
 					String genre = scan.nextLine();
-					System.out.println("Song artist: ");
+					vue.getartistename();
 					String artist = scan.nextLine();
-					System.out.println("Song length in seconds: ");
+					vue.getlengtsong();
 					int length = Integer.parseInt(scan.nextLine());
-					System.out.println("Song content: ");
+					vue.getsongcontend();
 					String content = scan.nextLine();
 					Song s = new Song(title, artist, length, content, genre);
 					theHub.addElement(s);
-					System.out.println("New element list: ");
+					vue.newlist();
 					Iterator<AudioElement> it = theHub.elements();
-					while (it.hasNext())
-						System.out.println(it.next().getTitle());
-					System.out.println("Song created!");
-					printAvailableCommands();
+					while (it.hasNext()) {
+						vue.createsong(it);
+					}
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'a':
 					// add a new album
-					System.out.println("Enter a new album: ");
-					System.out.println("Album title: ");
+					vue.gettitle();
 					String aTitle = scan.nextLine();
-					System.out.println("Album artist: ");
+					vue.getartistename();
 					String aArtist = scan.nextLine();
-					System.out.println("Album length in seconds: ");
+					vue.getlengtsong();
 					int aLength = Integer.parseInt(scan.nextLine());
-					System.out.println("Album date as YYYY-DD-MM: ");
+					vue.getyear();
 					String aDate = scan.nextLine();
 					Album a = new Album(aTitle, aArtist, aLength, aDate);
 					theHub.addAlbum(a);
-					System.out.println("New list of albums: ");
+					vue.newlist();
 					Iterator<Album> ita = theHub.albums();
 					while (ita.hasNext())
-						System.out.println(ita.next().getTitle());
-					System.out.println("Album created!");
-					printAvailableCommands();
+						vue.createalbum(ita);
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case '+':
 					// add a song to an album:
-					System.out.println("Add an existing song to an existing album");
-					System.out.println("Type the name of the song you wish to add. Available songs: ");
+					vue.addsongalbum();
 					itae = theHub.elements();
 					while (itae.hasNext()) {
 						AudioElement ae = itae.next();
 						if (ae instanceof Song)
-							System.out.println(ae.getTitle());
+							vue.showsongtitle(ae);
 					}
 					songTitle = scan.nextLine();
 
-					System.out.println("Type the name of the album you wish to enrich. Available albums: ");
+					vue.typethename();
 					Iterator<Album> ait = theHub.albums();
 					while (ait.hasNext()) {
 						Album al = ait.next();
-						System.out.println(al.getTitle());
+						vue.getalbumname(al);
 					}
 					String titleAlbum = scan.nextLine();
 					try {
 						theHub.addElementToAlbum(songTitle, titleAlbum);
 					} catch (NoAlbumFoundException ex) {
 						log.writeError("No album found with the requested title trying to add a song to it.");
-						System.out.println(ex.getMessage());
+						vue.exerror(ex);
 					} catch (NoElementFoundException ex) {
 						log.writeError("No element found while trying to add it to an album.");
-						System.out.println(ex.getMessage());
+						vue.nosongfound(ex);
 					}
-					System.out.println("Song added to the album!");
-					printAvailableCommands();
+					vue.songaddalbum();
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'l':
 					// add a new audiobook
-					System.out.println("Enter a new audiobook: ");
-					System.out.println("AudioBook title: ");
+					vue.gettitle();
 					String bTitle = scan.nextLine();
-					System.out.println("AudioBook category (youth, novel, theater, documentary, speech)");
+					vue.getcategori();
 					String bCategory = scan.nextLine();
-					System.out.println("AudioBook artist: ");
+					vue.getartistename();
 					String bArtist = scan.nextLine();
-					System.out.println("AudioBook length in seconds: ");
+					vue.getlengtsong();
 					int bLength = Integer.parseInt(scan.nextLine());
-					System.out.println("AudioBook content: ");
+					vue.getsongcontend();
 					String bContent = scan.nextLine();
-					System.out.println("AudioBook language (french, english, italian, spanish, german)");
+					vue.getlangage();
 					String bLanguage = scan.nextLine();
 					AudioBook b = new AudioBook(bTitle, bArtist, bLength, bContent, bLanguage, bCategory);
 					theHub.addElement(b);
-					System.out.println("Audiobook created! New element list: ");
+					vue.getelement();
 					Iterator<AudioElement> itl = theHub.elements();
 					while (itl.hasNext())
-						System.out.println(itl.next().getTitle());
-					printAvailableCommands();
+						vue.createsong(itl);
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 'p':
 					// create a new playlist from existing elements
-					System.out.println("Add an existing song or audiobook to a new playlist");
-					System.out.println("Existing playlists:");
+					vue.newplalist();
 					Iterator<PlayList> itpl = theHub.playlists();
 					while (itpl.hasNext()) {
 						PlayList pl = itpl.next();
-						System.out.println(pl.getTitle());
+						vue.getplaylisttitle(pl);
 					}
-					System.out.println("Type the name of the playlist you wish to create:");
+					vue.plailistcreated();
 					String playListTitle = scan.nextLine();
 					PlayList pl = new PlayList(playListTitle);
 					theHub.addPlaylist(pl);
-					System.out.println("Available elements: ");
+					vue.availableelement();
 
 					Iterator<AudioElement> itael = theHub.elements();
 					while (itael.hasNext()) {
 						AudioElement ae = itael.next();
-						System.out.println(ae.getTitle());
+						vue.showsongtitle(ae);
 					}
 					while (choice.charAt(0) != 'n') {
-						System.out.println("Type the name of the audio element you wish to add or 'n' to exit:");
+						vue.audioelementadd();
 						String elementTitle = scan.nextLine();
 						try {
 							theHub.addElementToPlayList(elementTitle, playListTitle);
 						} catch (NoPlayListFoundException ex) {
 							log.writeError("No playlist found while trying to add a audio element to it.");
-							System.out.println(ex.getMessage());
+							vue.noplaylistfound(ex);
 						} catch (NoElementFoundException ex) {
 							log.writeError("No element found while trying to add it to a playlist.");
-							System.out.println(ex.getMessage());
+							vue.nosongfound(ex);
 						}
 
-						System.out.println("Type y to add a new one, n to end");
+						vue.continued();
 						choice = scan.nextLine();
 					}
-					System.out.println("Playlist created!");
-					printAvailableCommands();
+					System.out.println();
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case '-':
 					// delete a playlist
-					System.out.println("Delete an existing playlist. Available playlists:");
+					vue.deleted();
 					Iterator<PlayList> itp = theHub.playlists();
 					while (itp.hasNext()) {
 						PlayList p = itp.next();
-						System.out.println(p.getTitle());
+						vue.getplaylisttitle(p);
 					}
 					String plTitle = scan.nextLine();
 					try {
 						theHub.deletePlayList(plTitle);
 					} catch (NoPlayListFoundException ex) {
-						System.out.println(ex.getMessage());
+						vue.noplaylistfound(ex);
 						log.writeError("No playlist found while trying to delete it.");
 					}
-					System.out.println("Playlist deleted!");
-					printAvailableCommands();
+					vue.deleted();
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				case 's':
@@ -269,8 +245,8 @@ public class Main {
 					theHub.saveElements();
 					theHub.saveAlbums();
 					theHub.savePlayLists();
-					System.out.println("Elements, albums and playlists saved!");
-					printAvailableCommands();
+					vue.saved();
+					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
 				default:
@@ -284,19 +260,5 @@ public class Main {
 		log.close();
 	}
 
-	private static void printAvailableCommands() {
-		System.out.println("t: display the album titles, ordered by date");
-		System.out.println("g: display songs of an album, ordered by genre");
-		System.out.println("d: display songs of an album");
-		System.out.println("u: display audiobooks ordered by author");
-		System.out.println("c: add a new song");
-		System.out.println("a: add a new album");
-		System.out.println("+: add a song to an album");
-		System.out.println("l: add a new audiobook");
-		System.out.println("p: create a new playlist from existing songs and audio books");
-		System.out.println("-: delete an existing playlist");
-		System.out.println("s: save elements, albums, playlists");
-		System.out.println("i: listen to a song");
-		System.out.println("q: quit program");
-	}
+	
 }
