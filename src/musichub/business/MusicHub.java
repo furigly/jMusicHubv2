@@ -43,13 +43,16 @@ public class MusicHub {
 
 	private XMLHandler xmlHandler = new XMLHandler();
 
-	public MusicHub() {
+	private Log log;
+
+	public MusicHub(Log log) {
 		albums = new LinkedList<Album>();
 		playlists = new LinkedList<PlayList>();
 		elements = new LinkedList<AudioElement>();
 		this.loadElements();
 		this.loadAlbums();
 		this.loadPlaylists();
+		this.log = log;
 	}
 
 	public void addElement(AudioElement element) {
@@ -263,6 +266,7 @@ public class MusicHub {
 						this.addAlbum(new Album(albumElement));
 					} catch (Exception ex) {
 						System.out.println("Something is wrong with the XML album element");
+						log.writeError("Something is wrong with the XML album element.");
 					}
 				}
 			}
@@ -282,6 +286,7 @@ public class MusicHub {
 						this.addPlaylist(new PlayList(playlistElement));
 					} catch (Exception ex) {
 						System.out.println("Something is wrong with the XML playlist element");
+						log.writeError("Something is wrong with the XML playlist element");
 					}
 				}
 			}
@@ -302,6 +307,7 @@ public class MusicHub {
 						this.addElement(newSong);
 					} catch (Exception ex) {
 						System.out.println("Something is wrong with the XML song element");
+						log.writeError("Something is wrong with the XML song element");
 					}
 				}
 				if (audioElement.getNodeName().equals("audiobook")) {
@@ -310,6 +316,7 @@ public class MusicHub {
 						this.addElement(newAudioBook);
 					} catch (Exception ex) {
 						System.out.println("Something is wrong with the XML audiobook element");
+						log.writeError("Something is wrong with the XML audiobook element");
 					}
 				}
 			}

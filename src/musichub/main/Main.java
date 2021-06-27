@@ -14,7 +14,8 @@ import java.io.BufferedOutputStream;
 public class Main {
 	public static void main(String[] args) {
 
-		MusicHub theHub = new MusicHub();
+		Log log = new Log();
+		MusicHub theHub = new MusicHub(log);
 
 		System.out.println("Type h for available commands");
 
@@ -44,15 +45,18 @@ public class Main {
 					String songTitle = scan.nextLine();
 					try {
 						theHub.playSong(songTitle);
-						// play the chosen song
 					} catch (NoElementFoundException ex) {
 						System.out.println("No song found with the requested title : " + ex.getMessage());
+						log.writeError("No song found with the requested title trying to listen to it.");
 					} catch (UnsupportedAudioFileException e) {
 						System.out.println("The audio file is not supported : " + e.getMessage());
+						log.writeError("The audio file is not supported.");
 					} catch (IOException e) {
 						System.out.println("The audio file didn't open correctly : " + e.getMessage());
+						log.writeError("The audio file didn't open correctly.");
 					} catch (LineUnavailableException e) {
 						System.out.println("The audio canal is not available : " + e.getMessage());
+						log.writeError("The audio canal is not available.");
 					}
 					printAvailableCommands();
 					choice = scan.nextLine();
@@ -74,6 +78,7 @@ public class Main {
 						System.out.println(theHub.getAlbumSongsSortedByGenre(albumTitle));
 					} catch (NoAlbumFoundException ex) {
 						System.out.println("No album found with the requested title " + ex.getMessage());
+						log.writeError("No album found with the requested title.");
 					}
 					printAvailableCommands();
 					choice = scan.nextLine();
@@ -89,6 +94,7 @@ public class Main {
 						System.out.println(theHub.getAlbumSongs(albumTitle));
 					} catch (NoAlbumFoundException ex) {
 						System.out.println("No album found with the requested title " + ex.getMessage());
+						log.writeError("No album found with the requested title.");
 					}
 					printAvailableCommands();
 					choice = scan.nextLine();
@@ -165,8 +171,10 @@ public class Main {
 					try {
 						theHub.addElementToAlbum(songTitle, titleAlbum);
 					} catch (NoAlbumFoundException ex) {
+						log.writeError("No album found with the requested title trying to add a song to it.");
 						System.out.println(ex.getMessage());
 					} catch (NoElementFoundException ex) {
+						log.writeError("No element found while trying to add it to an album.");
 						System.out.println(ex.getMessage());
 					}
 					System.out.println("Song added to the album!");
@@ -223,8 +231,10 @@ public class Main {
 						try {
 							theHub.addElementToPlayList(elementTitle, playListTitle);
 						} catch (NoPlayListFoundException ex) {
+							log.writeError("No playlist found while trying to add a audio element to it.");
 							System.out.println(ex.getMessage());
 						} catch (NoElementFoundException ex) {
+							log.writeError("No element found while trying to add it to a playlist.");
 							System.out.println(ex.getMessage());
 						}
 
@@ -248,6 +258,7 @@ public class Main {
 						theHub.deletePlayList(plTitle);
 					} catch (NoPlayListFoundException ex) {
 						System.out.println(ex.getMessage());
+						log.writeError("No playlist found while trying to delete it.");
 					}
 					System.out.println("Playlist deleted!");
 					printAvailableCommands();
@@ -263,11 +274,13 @@ public class Main {
 					choice = scan.nextLine();
 					break;
 				default:
+					choice = scan.nextLine();
 
 					break;
 			}
 		}
 		scan.close();
+		log.close();
 	}
 
 	private static void printAvailableCommands() {
