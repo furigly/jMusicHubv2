@@ -274,6 +274,7 @@ public class Main {
 					choice = scan.nextLine();
 					break;
 				default:
+					//ajout de cette ligne pour corrigé le bug
 					choice = scan.nextLine();
 
 					break;
