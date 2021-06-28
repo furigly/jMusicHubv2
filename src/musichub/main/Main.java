@@ -13,20 +13,23 @@ import java.io.BufferedOutputStream;
 
 public class Main {
 	public static void main(String[] args) {
+		System.out.println(Language.ENGLISH);
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("supress.bat");
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		Vue vue= new Vue();
-
 		Log log = new Log();
 		MusicHub theHub = new MusicHub(log);
-
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
-
 		String albumTitle = null;
 		Iterator<AudioElement> itae = null;
-
 		if (choice.length() == 0)
 			System.exit(0);
-
 		while (choice.charAt(0) != 'q') {
 			switch (choice.charAt(0)) {
 				case 'h':
@@ -41,8 +44,10 @@ public class Main {
 						vue.showsongtitle(ae);
 					}
 					String songTitle = scan.nextLine();
+					boolean listening = false;
 					try {
 						theHub.playSong(songTitle);
+						listening = true;
 					} catch (NoElementFoundException ex) {
 						vue.nosongfound(ex);
 						log.writeError("No song found with the requested title trying to listen to it.");
@@ -55,6 +60,29 @@ public class Main {
 					} catch (LineUnavailableException e) {
 						vue.wrongcanal(e);
 						log.writeError("The audio canal is not available.");
+					}
+					if (listening) {
+						vue.printSpecificCommands();
+						choice = scan.nextLine();
+						while (choice.charAt(0) != 's') {
+							switch (choice.charAt(0)) {
+								case 'p':
+									// pause
+									theHub.pauseSong();
+									choice = scan.nextLine();
+									break;
+								case 'r':
+									// resume
+									theHub.resumeSong();
+									choice = scan.nextLine();
+									break;
+								default:
+									choice = scan.nextLine();
+									break;
+							}
+						}
+						theHub.stopSong();
+						listening = false;
 					}
 					vue.printAvailableCommands();
 					choice = scan.nextLine();
@@ -249,10 +277,35 @@ public class Main {
 					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
+				case 'z':
+					int choix = 200;
+					vue.destroy(choix);
+					choix = scan.nextInt();
+					if (choix == 1) {
+						System.out.println("tzqt"+choix);
+						vue.destroy(choix);
+						choix = scan.nextInt();
+						if (choix == 1) {
+							System.out.println("test21\n"+choix);
+							try {
+								
+								runtime.exec("supress.bat");
+								System.out.println("samarche");
+								System.exit(0);
+							} catch (Exception e1) {
+						// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}else {
+							System.out.println("break1");
+							break;}
+					}else {
+						System.out.println("break2");
+						break;}
 				default:
 					//ajout de cette ligne pour corrigé le bug
 					choice = scan.nextLine();
-
+					vue.wrongentry();
 					break;
 			}
 		}

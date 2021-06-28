@@ -45,6 +45,8 @@ public class MusicHub {
 
 	private Log log;
 
+	private Clip clip;
+
 	public MusicHub(Log log) {
 		albums = new LinkedList<Album>();
 		playlists = new LinkedList<PlayList>();
@@ -246,11 +248,21 @@ public class MusicHub {
 		if (found == true) {
 			File audio = new File("files/audio/"+theElement.content);
 			AudioInputStream audioStream = AudioSystem.getAudioInputStream(audio);
-			Clip clip = AudioSystem.getClip();
+			clip = AudioSystem.getClip();
 			clip.open(audioStream);
 			clip.start();
 		} else
 			throw new NoElementFoundException("Element " + elementTitle + " not found!");
+	}
+
+	public void pauseSong(){
+		clip.stop();
+	}
+	public void stopSong(){
+		clip.stop();
+	}
+	public void resumeSong(){
+		clip.start();
 	}
 
 	private void loadAlbums() {
