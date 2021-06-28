@@ -13,7 +13,6 @@ import java.io.BufferedOutputStream;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println(Language.ENGLISH);
 		Runtime runtime = Runtime.getRuntime();
 		try {
 			runtime.exec("supress.bat");

@@ -12,8 +12,9 @@ public class testunitaire {
 	@Test
 	public void test() throws Exception {
 		Song song = new Song("test", "test2", 200, "0", "lon,g","JAZZ");
-		String test2 = song.getGenre();
-	    assertEquals("JAZZ",test2);
+		String test2 = song.getTitle();
+		System.out.println(test2);
+	    assertEquals("test",test2);
 	  }
 
 }
