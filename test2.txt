@@ -1,0 +1,23 @@
+ Le volume dans le lecteur D s'appelle Data
+ Le num‚ro de s‚rie du volume est CC70-2D64
+
+ R‚pertoire de D:\java workspace\jMusicHubv2
+
+28/06/2021  21:27    <DIR>          .
+28/06/2021  21:27    <DIR>          ..
+18/06/2021  18:30               232 .classpath
+18/06/2021  18:30             6ÿ148 .DS_Store
+18/06/2021  18:30               387 .project
+28/06/2021  21:24    <DIR>          bin
+18/06/2021  17:05               107 compile.bat
+28/06/2021  19:49                 0 filename.txt
+28/06/2021  19:49    <DIR>          files
+18/06/2021  17:05            35ÿ823 LICENSE
+28/06/2021  21:26                 0 log.txt
+18/06/2021  17:05                44 README.md
+18/06/2021  17:05                38 run.bat
+18/06/2021  17:05    <DIR>          src
+28/06/2021  20:32                14 supress.bat
+28/06/2021  21:27                 0 test2.txt
+              11 fichier(s)           42ÿ793 octets
+               5 R‚p(s)  284ÿ302ÿ295ÿ040 octets libres
