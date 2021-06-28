@@ -21,6 +21,7 @@ public class Vue {
 		System.out.println("Type h for available commands");
 	}
 
+
 	public void printAvailableCommands() {
 		System.out.println("t: display the album titles, ordered by date");
 		System.out.println("g: display songs of an album, ordered by genre");
