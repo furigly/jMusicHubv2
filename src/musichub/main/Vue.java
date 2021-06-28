@@ -215,22 +215,16 @@ public class Vue {
 
 	public void wrongentry() {
 		System.out.println("wrong input");
-
-		int i=0;
-	public void destroy(int choix) {
 	}
-			
+	public void destroy(int choix) {
+		int i=0;
 			if(choix== 200){
-				i++;
-				System.out.println(i);
 				System.out.println("the app will be suppress do you want to ? (press 1 for yes)");
 			}
-				System.out.println(i);
 			else if(choix==1) { 
-				i++;
-			}
+			
 				System.out.println("are you sure ?(press 1 for yes)");
-			else { 
+			}else { 
 				System.out.println(i);
 				i++;
 				System.out.println("Noting will happen ");
