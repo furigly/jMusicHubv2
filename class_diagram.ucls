@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="musichub.business.Song" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/Song.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="234" x="1416" y="553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="musichub.business.AudioElement" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/AudioElement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="234" x="1552" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="musichub.business.NoPlayListFoundException" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/NoPlayListFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="364" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="musichub.business.PlayList" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/PlayList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="234" x="593" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="musichub.business.SortByAuthor" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/MusicHub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="223" x="867" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="musichub.business.SortByDate" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/MusicHub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="153" x="1130" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="7" language="java" name="musichub.business.Language" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/Language.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="128" x="1606" y="818"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="8" language="java" name="musichub.business.NoElementFoundException" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/NoElementFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="189" x="1323" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="musichub.business.SortByGenre" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/MusicHub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="143" x="1826" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="musichub.business.MusicHub" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/MusicHub.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="657" width="270" x="2553" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="musichub.business.AudioBook" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/AudioBook.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="283" x="1690" y="553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="12" language="java" name="musichub.business.Category" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/Category.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="153" x="1774" y="818"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="13" language="java" name="musichub.business.Genre" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/Genre.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="119" x="1416" y="818"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="14" language="java" name="musichub.business.Album" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/Album.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="282" x="2009" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="musichub.business.NoAlbumFoundException" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/NoAlbumFoundException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="182" x="2331" y="-144"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="musichub.business.Log" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/business/Log.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="134" x="2553" y="553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="musichub.main.Vue" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/main/Vue.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="998" y="375"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="musichub.main.Main" project="jMusicHubv2" 
+    file="/jMusicHubv2/src/musichub/main/Main.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="1313" y="35"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="19">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="20" name="category"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="22">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="23">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="24" name="log"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="26">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="27" name="genre"/>      
+      <multiplicity id="28" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="29">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <association id="30">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="31" name="language"/>      
+      <multiplicity id="32" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
