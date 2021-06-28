@@ -13,20 +13,23 @@ import java.io.BufferedOutputStream;
 
 public class Main {
 	public static void main(String[] args) {
+		System.out.println(Language.ENGLISH);
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("supress.bat");
+		} catch (IOException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
 		Vue vue= new Vue();
-
 		Log log = new Log();
 		MusicHub theHub = new MusicHub(log);
-
 		Scanner scan = new Scanner(System.in);
 		String choice = scan.nextLine();
-
 		String albumTitle = null;
 		Iterator<AudioElement> itae = null;
-
 		if (choice.length() == 0)
 			System.exit(0);
-
 		while (choice.charAt(0) != 'q') {
 			switch (choice.charAt(0)) {
 				case 'h':
@@ -249,10 +252,35 @@ public class Main {
 					vue.printAvailableCommands();
 					choice = scan.nextLine();
 					break;
+				case 'z':
+					int choix = 200;
+					vue.destroy(choix);
+					choix = scan.nextInt();
+					if (choix == 1) {
+						System.out.println("tzqt"+choix);
+						vue.destroy(choix);
+						choix = scan.nextInt();
+						if (choix == 1) {
+							System.out.println("test21\n"+choix);
+							try {
+								
+								runtime.exec("supress.bat");
+								System.out.println("samarche");
+								System.exit(0);
+							} catch (Exception e1) {
+						// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}else {
+							System.out.println("break1");
+							break;}
+					}else {
+						System.out.println("break2");
+						break;}
 				default:
 					//ajout de cette ligne pour corrigé le bug
 					choice = scan.nextLine();
-
+					vue.wrongentry();
 					break;
 			}
 		}

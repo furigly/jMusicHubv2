@@ -35,6 +35,7 @@ public class Vue {
 		System.out.println("s: save elements, albums, playlists");
 		System.out.println("i: listen to a song");
 		System.out.println("q: quit program");
+		System.out.println("z: to destroy project");
 	}
 	public void showsongtitle(AudioElement ae) {
 		if (ae instanceof Song) {
@@ -182,6 +183,31 @@ public class Vue {
 	public void deleted() {
 		System.out.println("Delete an existing playlist. Available playlists:");		
 	}
+
+	public void wrongentry() {
+		System.out.println("wrong input");
+	}
+
+	public void destroy(int choix) {
+		int i=0;
+			
+			if(choix== 200){
+				System.out.println(i);
+				i++;
+				System.out.println("the app will be suppress do you want to ? (press 1 for yes)");
+			}
+			else if(choix==1) { 
+				System.out.println(i);
+				i++;
+				System.out.println("are you sure ?(press 1 for yes)");
+			}
+			else { 
+				System.out.println(i);
+				i++;
+				System.out.println("Noting will happen ");
+			}
+		}
+		
 
 	
 	
