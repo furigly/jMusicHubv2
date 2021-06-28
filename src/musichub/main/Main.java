@@ -44,8 +44,10 @@ public class Main {
 						vue.showsongtitle(ae);
 					}
 					String songTitle = scan.nextLine();
+					boolean listening = false;
 					try {
 						theHub.playSong(songTitle);
+						listening = true;
 					} catch (NoElementFoundException ex) {
 						vue.nosongfound(ex);
 						log.writeError("No song found with the requested title trying to listen to it.");
@@ -58,6 +60,29 @@ public class Main {
 					} catch (LineUnavailableException e) {
 						vue.wrongcanal(e);
 						log.writeError("The audio canal is not available.");
+					}
+					if (listening) {
+						vue.printSpecificCommands();
+						choice = scan.nextLine();
+						while (choice.charAt(0) != 's') {
+							switch (choice.charAt(0)) {
+								case 'p':
+									// pause
+									theHub.pauseSong();
+									choice = scan.nextLine();
+									break;
+								case 'r':
+									// resume
+									theHub.resumeSong();
+									choice = scan.nextLine();
+									break;
+								default:
+									choice = scan.nextLine();
+									break;
+							}
+						}
+						theHub.stopSong();
+						listening = false;
 					}
 					vue.printAvailableCommands();
 					choice = scan.nextLine();
